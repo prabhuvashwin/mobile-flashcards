@@ -10,7 +10,7 @@ import Deck from './components/Deck'
 import DeckList from './components/DeckList'
 import NewDeck from './components/NewDeck'
 import NewCard from './components/NewCard'
-// import Quiz from './components/Quiz'
+import Quiz from './components/Quiz'
 
 function AppStatusBar ({backgroundColor, ...props}) {
   return (
@@ -74,19 +74,19 @@ const MainNavigator = StackNavigator({
     navigationOptions: {
       headerTintColor: 'white',
       headerStyle: {
-        backgroundColor: '#444444',
+        backgroundColor: '#444444'
       }
     }
   },
-  // Quiz: {
-  //   screen: Quiz,
-  //   navigationOptions: {
-  //     headerTintColor: 'white',
-  //     headerStyle: {
-  //       backgroundColor: '#444444',
-  //     }
-  //   }
-  // }
+  Quiz: {
+    screen: Quiz,
+    navigationOptions: {
+      headerTintColor: 'white',
+      headerStyle: {
+        backgroundColor: '#444444',
+      }
+    }
+  }
 })
 
 export default class App extends Component {

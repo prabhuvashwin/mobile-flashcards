@@ -1,4 +1,4 @@
-import { GET_DECKS, ADD_DECK, ADD_CARD } from '../actions'
+import { GET_DECKS, ADD_DECK, ADD_CARD, REMOVE_DECK} from '../actions'
 
 export default function decks (state={}, action) {
   switch (action.type) {
@@ -28,6 +28,11 @@ export default function decks (state={}, action) {
           ]
         }
       }
+
+    case REMOVE_DECK:
+      let temp = Object.values(state).filter(t => t.title != action.title)
+      state = Object.assign({}, temp)
+      return state
 
     default:
       return state

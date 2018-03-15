@@ -7,10 +7,11 @@ import { addCard } from '../actions'
 class Deck extends Component {
   render() {
     const { deck, navigation } = this.props
+
     return (
       <View>
         <Card title={deck.title}>
-          <Text style={{marginBottom: 20}}>
+          <Text style={{marginBottom: 20, textAlign: 'center'}}>
             {deck.cards.length} card(s) are present in this deck
           </Text>
           <Button
@@ -19,8 +20,8 @@ class Deck extends Component {
             backgroundColor='purple'
             buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 20}}
             onPress={() => navigation.navigate(
-                'NewCard',
-                { title: deck.title }
+              'NewCard',
+              { title: deck.title }
             )} />
           <Button
             title='Start Quiz'
@@ -29,8 +30,8 @@ class Deck extends Component {
             disabled={deck.cards.length === 0}
             buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 20}}
             onPress={() => navigation.navigate(
-                'Quiz',
-                { title: deck.title }
+              'Quiz',
+              { title: deck.title }
             )} />
         </Card>
       </View>
