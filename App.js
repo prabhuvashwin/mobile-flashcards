@@ -24,6 +24,7 @@ const Tabs = TabNavigator({
   Decks: {
     screen: DeckList,
     navigationOptions: {
+      swipeEnabled: true,
       tabBarLabel: 'Decks',
       tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
     },
@@ -31,6 +32,7 @@ const Tabs = TabNavigator({
   NewDeck: {
     screen: NewDeck,
     navigationOptions: {
+      swipeEnabled: true,
       tabBarLabel: 'New Deck',
       tabBarIcon: ({ tintColor }) => <FontAwesome name='plus-square' size={30} color={tintColor} />
     },
@@ -40,10 +42,13 @@ const Tabs = TabNavigator({
     header: null
   },
   tabBarOptions: {
-    activeTintColor: Platform.OS === 'ios' ? '#ffe274' : 'white',
+    activeTintColor: Platform.OS === 'ios' ? '#0e0787' : 'white',
+    labelStyle: {
+      fontSize: 15,
+    },
     style: {
       height: 56,
-      backgroundColor: Platform.OS === 'ios' ? 'white' : '#ffe274',
+      backgroundColor: Platform.OS === 'ios' ? 'white' : '#0e0787',
       shadowColor: 'rgba(0, 0, 0, 0.24)',
       shadowOffset: {
         width: 0,
@@ -62,28 +67,36 @@ const MainNavigator = StackNavigator({
   Deck: {
     screen: Deck,
     navigationOptions: ({navigation}) => ({
-      title: navigation.state.params.title,
+      title: 'Flashcards',
+      headerBackTitle: 'back',
       headerTintColor: 'white',
       headerStyle: {
         backgroundColor: '#444444',
+        height: 30
       }
     }),
   },
   NewCard: {
     screen: NewCard,
     navigationOptions: {
+      title: 'Flashcards',
+      headerBackTitle: 'back',
       headerTintColor: 'white',
       headerStyle: {
-        backgroundColor: '#444444'
+        backgroundColor: '#444444',
+        height: 30
       }
     }
   },
   Quiz: {
     screen: Quiz,
     navigationOptions: {
+      title: 'Flashcards',
+      headerBackTitle: 'back',
       headerTintColor: 'white',
       headerStyle: {
         backgroundColor: '#444444',
+        height: 30
       }
     }
   }

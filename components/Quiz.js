@@ -3,13 +3,14 @@ import { View, Text, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { Card, ListItem, Button } from 'react-native-elements'
 import { NavigationActions } from 'react-navigation'
-import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
+import { clearLocalNotifications, setLocalNotification } from '../utils/helpers'
 
 class Quiz extends Component {
   state = {
     index: 0,
     score: 0,
     viewAnswer: false,
+    selectedAnswerType: false,
     isFinished: false,
     displayResult: ''
   }
@@ -35,9 +36,9 @@ class Quiz extends Component {
       this.setState((prev) => {
         return { score: prev.score + 1 }
       })
-      this.setState({ displayResult: 'Good job! 👍' })
+      this.setState({ displayResult: 'Good job! 👍', selectedAnswerType: true })
     } else {
-      this.setState({ displayResult: 'Wrong answer! 👎' })
+      this.setState({ displayResult: 'Wrong answer! 👎', selectedAnswerType: false })
     }
   }
 
@@ -49,7 +50,7 @@ class Quiz extends Component {
       viewAnswer: false,
       isFinished: false
     })
-    clearLocalNotification()
+    clearLocalNotifications()
       .then(setLocalNotification)
   }
 
@@ -57,15 +58,16 @@ class Quiz extends Component {
     const { navigation } = this.props
     const backAction = NavigationActions.back()
     navigation.dispatch(backAction)
-    clearLocalNotification()
+    clearLocalNotifications()
       .then(setLocalNotification)
   }
 
   render() {
     const { cards } = this.props
-    const { index, isFinished, viewAnswer, displayResult, score } = this.state
+    const { index, isFinished, viewAnswer, displayResult, score, selectedAnswerType } = this.state
 
     let currentCard = cards[index]
+    console.log(currentCard)
 
     if (!isFinished) {
       return (
@@ -85,7 +87,7 @@ class Quiz extends Component {
                 onPress={() => this.setState({ viewAnswer: true })} />
             )}
             {(viewAnswer && displayResult.length === 0) && (
-              <Text style={{marginBottom: 20, textAlign: 'center', fontSize: 25, color: 'green'}}>{currentCard.answer}</Text>
+              <Text style={{marginBottom: 20, textAlign: 'center', fontSize: 25, color: 'rgb(24, 4, 92)'}}>{currentCard.answer}</Text>
             )}
 
             {displayResult.length === 0 && (
@@ -94,7 +96,7 @@ class Quiz extends Component {
                   backgroundColor='green'
                   buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 20}}
                   title='Correct'
-                  disabled={viewAnswer}
+                  disabled={!viewAnswer}
                   onPress={() => this.submitAnswer(true)} />
                 <Button
                   backgroundColor='red'
@@ -107,8 +109,12 @@ class Quiz extends Component {
 
             {displayResult.length > 0 && (
               <View>
-                <Text style={{marginBottom: 20, textAlign: 'center', fontSize: 25, color: 'green'}}>{currentCard.answer}</Text>
-                <Text style={{marginBottom: 20, textAlign: 'center', fontSize: 28, color: 'blue'}}>{displayResult}</Text>
+                <Text style={{marginBottom: 20, textAlign: 'center', fontSize: 25,
+                      color: currentCard.answerType ? 'rgb(3, 136, 12)' : 'rgb(233, 48, 7)'}}>{currentCard.answer}</Text>
+                <Text style={{marginBottom: 20, textAlign: 'center', fontSize: 28,
+                      color: selectedAnswerType ? 'rgb(3, 136, 12)' : 'rgb(233, 48, 7)'}}>{displayResult}</Text>
+                <Text style={{marginBottom: 20, textAlign: 'center', fontSize: 28,
+                      color: 'rgb(24, 4, 92)'}}>{currentCard.comments}</Text>
                 <Button
                   backgroundColor='#444444'
                   buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 20}}

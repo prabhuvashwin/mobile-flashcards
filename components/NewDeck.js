@@ -43,7 +43,7 @@ class NewDeck extends Component {
 
           <Button
             icon={{name: 'add'}}
-            backgroundColor='#ffe274'
+            backgroundColor='#0e0787'
             disabled={title.length === 0}
             onPress={this.submit}
             buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 20}}

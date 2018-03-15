@@ -17,7 +17,7 @@ class Deck extends Component {
           <Button
             title='Add Card'
             icon={{name: 'add'}}
-            backgroundColor='purple'
+            backgroundColor='#074a87'
             buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 20}}
             onPress={() => navigation.navigate(
               'NewCard',
@@ -26,7 +26,7 @@ class Deck extends Component {
           <Button
             title='Start Quiz'
             icon={{name: 'arrow-forward'}}
-            backgroundColor='purple'
+            backgroundColor='#047527'
             disabled={deck.cards.length === 0}
             buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 20}}
             onPress={() => navigation.navigate(

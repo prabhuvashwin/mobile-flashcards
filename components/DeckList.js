@@ -92,10 +92,12 @@ class DeckList extends Component {
       return <AppLoading />
     }
     return (
-      <FlatList
-        data={decks}
-        keyExtractor={(item, index) => index}
-        renderItem={this.renderItem.bind(this)} />
+      <View style={{marginTop: 15}}>
+        <FlatList
+          data={decks}
+          keyExtractor={(item, index) => index}
+          renderItem={this.renderItem.bind(this)} />
+      </View>
     )
   }
 }
