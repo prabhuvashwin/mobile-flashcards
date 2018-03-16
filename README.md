@@ -1,4 +1,4 @@
-#Mobile Flashcards Project
+# Mobile Flashcards Project
 
 Mobile Flashcards is a iOS mobile application built using React Native and Redux. This project encompasses the fundamental aspects of building a native application including handling infinite lists, routing, and user input. By building this project, you will gain an understanding of how to use React Native to build an iOS and Android application. This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
@@ -26,18 +26,11 @@ Mobile Flashcards is a iOS mobile application built using React Native and Redux
 - Implement leaderboard for the app, which allows user to compares themselves with the others who have taken tests on the same deck
 
 ## Screenshots of the application
-1) DeckList View:
-    ![Alt Text](images/decklist.gif)
-
-2) New Deck View:
-    ![Alt Text](images/newdeck.gif)
-    ![Alt Text](images/newdeck-alreadyexists.gif)
-
-3) New Card View:
-    ![Alt Text](images/addnewcard.gif)
-
-4) Quiz View:
-    ![Alt Text](images/quiz.gif)
+  ![DeckList View](images/newdeck.gif)
+  ![Create New Deck](images/newdeck.gif)
+  ![Deck Already Exists](images/newdeck-alreadyexists.gif)
+  ![Create New Card](images/addnewcard.gif)
+  ![Take Quiz](images/quiz.gif)
 
 ## Updating to New Releases
 
