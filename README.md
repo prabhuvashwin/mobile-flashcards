@@ -26,10 +26,8 @@ Mobile Flashcards is a iOS mobile application built using React Native and Redux
 - Implement leaderboard for the app, which allows user to compares themselves with the others who have taken tests on the same deck
 
 ## Screenshots of the application
-  ![DeckList View](images/newdeck.gif)
-  ![Create New Deck](images/newdeck.gif)
-  ![Deck Already Exists](images/newdeck-alreadyexists.gif)
-  ![Create New Card](images/addnewcard.gif)
+  ![DeckList View](images/newdeck.gif) ![Create New Deck](images/newdeck.gif)
+  ![Deck Already Exists](images/newdeck-alreadyexists.gif) ![Create New Card](images/addnewcard.gif)
   ![Take Quiz](images/quiz.gif)
 
 ## Updating to New Releases
