@@ -4,6 +4,7 @@ import { Card, Button } from 'react-native-elements'
 import { connect } from 'react-redux'
 import { saveDeckTitle } from '../utils/api'
 import { addDeck } from '../actions'
+import { styles } from '../utils/styles'
 
 class NewDeck extends Component {
   state = {
@@ -28,11 +29,11 @@ class NewDeck extends Component {
     return (
       <View style={{flex: 1, marginTop: 200}}>
         <Card
-          title="What's the title of your new deck?"
+          title="Title of the new deck"
           containerStyle={{justifyContent: 'space-between'}}>
           <TextInput
             placeholder='Enter deck title: '
-            style={{height: 40, marginLeft: 20, fontSize: 20}}
+            style={styles.txtInput}
             value={title}
             multiline={true}
             onChangeText={(text) => {
@@ -44,7 +45,7 @@ class NewDeck extends Component {
             backgroundColor='#0e0787'
             disabled={title.length === 0}
             onPress={this.submit}
-            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 20}}
+            buttonStyle={styles.btn}
             title='Create' />
         </Card>
       </View>

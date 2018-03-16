@@ -11,6 +11,8 @@ import DeckList from './components/DeckList'
 import NewDeck from './components/NewDeck'
 import NewCard from './components/NewCard'
 import Quiz from './components/Quiz'
+import QuizResults from './components/QuizResults'
+import { styles } from './utils/styles'
 
 function AppStatusBar ({backgroundColor, ...props}) {
   return (
@@ -71,9 +73,8 @@ const MainNavigator = StackNavigator({
       headerBackTitle: 'back',
       headerTintColor: 'white',
       headerStyle: {
-        backgroundColor: '#444444',
-        height: 30,
-        marginBottom: 5
+        backgroundColor: 'rgb(74, 74, 74)',
+        height: 30
       }
     }),
   },
@@ -84,9 +85,8 @@ const MainNavigator = StackNavigator({
       headerBackTitle: 'back',
       headerTintColor: 'white',
       headerStyle: {
-        backgroundColor: '#444444',
-        height: 30,
-        marginBottom: 5
+        backgroundColor: 'rgb(74, 74, 74)',
+        height: 30
       }
     }
   },
@@ -97,9 +97,20 @@ const MainNavigator = StackNavigator({
       headerBackTitle: 'back',
       headerTintColor: 'white',
       headerStyle: {
-        backgroundColor: '#444444',
-        height: 30,
-        marginBottom: 5
+        backgroundColor: 'rgb(74, 74, 74)',
+        height: 30
+      }
+    }
+  },
+  QuizResults: {
+    screen: QuizResults,
+    navigationOptions: {
+      title: 'Flashcards',
+      headerBackTitle: 'back',
+      headerTintColor: 'white',
+      headerStyle: {
+        backgroundColor: 'rgb(74, 74, 74)',
+        height: 30
       }
     }
   }
@@ -111,19 +122,10 @@ export default class App extends Component {
     return (
       <Provider store={createStore(reducer)}>
         <View style={{flex: 1}}>
-          <AppStatusBar backgroundColor={'#444444'} barStyle="light-content" />
+          <AppStatusBar backgroundColor={'rgb(74, 74, 74)'} barStyle="light-content" />
           <MainNavigator />
         </View>
       </Provider>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { View, TextInput } from 'react-native'
+import { View, TextInput, KeyboardAvoidingView } from 'react-native'
 import { connect } from 'react-redux'
 import { Card, Button, CheckBox } from 'react-native-elements'
 import { addCardToDeck } from '../utils/api'
 import { addCard } from '../actions'
+import { styles } from '../utils/styles'
 
 class NewCard extends Component {
   state = {
@@ -16,7 +17,7 @@ class NewCard extends Component {
   submit = () => {
     const { deck, dispatch } = this.props
     const { question, answer, answerType, comments } = this.state
-    console.log(deck)
+
     if (deck.cards.filter(card => card.question === question).length > 0) {
       alert('This question already present in the deck')
     } else {
@@ -35,11 +36,12 @@ class NewCard extends Component {
   render() {
     const { question, answer, answerType, comments } = this.state
     return (
-      <View style={{flex: 1, marginTop: 35}} behavior='padding'>
+      <KeyboardAvoidingView behavior='padding' style={{flex: 1}}>
         <Card title="New Card">
           <TextInput
+            multiline
             placeholder="Enter question: "
-            style={{height: 40, marginLeft: 20, fontSize: 20}}
+            style={styles.txtInput}
             value={question}
             multiline={true}
             onChangeText={(text) => {
@@ -48,7 +50,7 @@ class NewCard extends Component {
 
           <TextInput
             placeholder="Enter answer: "
-            style={{height: 40, marginLeft: 20, fontSize: 20}}
+            style={styles.txtInput}
             value={answer}
             multiline={true}
             onChangeText={(text) => {
@@ -57,7 +59,7 @@ class NewCard extends Component {
 
           <TextInput
             placeholder="Enter comment: "
-            style={{height: 40, marginLeft: 20, fontSize: 20}}
+            style={styles.txtInput}
             value={comments}
             multiline={true}
             onChangeText={(text) => {
@@ -68,7 +70,7 @@ class NewCard extends Component {
             center
             title='Check this box if the entered answer is correct'
             checked={answerType}
-            containerStyle={{borderRadius: 30, marginBottom: 10}}
+            containerStyle={styles.chkBox}
             onPress={() => {
               this.setState({ answerType: !(answerType) })
             }} />
@@ -78,10 +80,10 @@ class NewCard extends Component {
             backgroundColor='#0e0787'
             disabled={!(question.length !== 0 && answer.length !== 0)}
             onPress={this.submit}
-            buttonStyle={{borderRadius: 5}}
+            buttonStyle={styles.btn}
             title='Create Card' />
         </Card>
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }
