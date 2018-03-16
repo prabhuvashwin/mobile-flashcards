@@ -138,7 +138,7 @@ class Quiz extends Component {
           <Card
             title="Results 🏆">
             <Text style={{marginBottom: 20}}>
-              Your score : {score + " / " + cards.length}
+              Your score : {((score / cards.length) * 100).toFixed(2) + "% correct answers"}
             </Text>
             <Button
               icon={{name: 'replay'}}

@@ -1,31 +1,43 @@
-This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
+#Mobile Flashcards Project
 
-Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
+Mobile Flashcards is a iOS mobile application built using React Native and Redux. This project encompasses the fundamental aspects of building a native application including handling infinite lists, routing, and user input. By building this project, you will gain an understanding of how to use React Native to build an iOS and Android application. This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
-## Table of Contents
+## Requirements
+- Use create-react-native-app to build your project. [Done]
+- Allow users to create a deck which can hold an unlimited number of cards. [Done]
+- Allow users to add a card to a specific deck. [Done]
+- The front of the card should display the question. [Done]
+- The back of the card should display the answer. [Done]
+- Users should be able to quiz themselves on a specific deck and receive a score once they're done. [Done]
+- Users should receive a notification to remind themselves to study if they haven't already for that day. [Done]
 
-* [Updating to New Releases](#updating-to-new-releases)
-* [Available Scripts](#available-scripts)
-  * [npm start](#npm-start)
-  * [npm test](#npm-test)
-  * [npm run ios](#npm-run-ios)
-  * [npm run android](#npm-run-android)
-  * [npm run eject](#npm-run-eject)
-* [Writing and Running Tests](#writing-and-running-tests)
-* [Environment Variables](#environment-variables)
-  * [Configuring Packager IP Address](#configuring-packager-ip-address)
-* [Adding Flow](#adding-flow)
-* [Customizing App Display Name and Icon](#customizing-app-display-name-and-icon)
-* [Sharing and Deployment](#sharing-and-deployment)
-  * [Publishing to Expo's React Native Community](#publishing-to-expos-react-native-community)
-  * [Building an Expo "standalone" app](#building-an-expo-standalone-app)
-  * [Ejecting from Create React Native App](#ejecting-from-create-react-native-app)
-    * [Build Dependencies (Xcode & Android Studio)](#build-dependencies-xcode-android-studio)
-    * [Should I Use ExpoKit?](#should-i-use-expokit)
-* [Troubleshooting](#troubleshooting)
-  * [Networking](#networking)
-  * [iOS Simulator won't open](#ios-simulator-wont-open)
-  * [QR Code does not scan](#qr-code-does-not-scan)
+## Views
+- DeckList View - This is the default view which displays the title of each deck and displays the number of cards in a deck
+- Individual Deck View - This view displays the title of the deck, displays the number of cards in the deck, displays an option to start a quiz on this specific deck, an option to add a new question to the deck
+- Quiz View - displays a card question, an option to view the answer (flips the card), a "Correct" button, an "Incorrect" button, the number of cards left in the quiz, displays the percentage correct once the quiz is complete
+- New Deck view - an option to enter in the title for the new deck, an option to submit the new deck title
+- New Card view - an option to enter in the question, an option to enter in the answer, an option to specify whether the answer is correct or not, an option to provide any extra comments on the answer, an option to submit the new card
+
+## TODO tasks for the next version:
+- Shuffle the cards for the quiz
+- Let the user select the number of questions which need to appear in the quiz
+- Classify the cards into categories (Easy, Medium, Difficult). Allow the user to select the mode of difficulty OR increase the difficulty level of the quiz on a particular deck based on the user performance.
+- Implement analytics to provide progress report to the user on a particular deck
+- Implement leaderboard for the app, which allows user to compares themselves with the others who have taken tests on the same deck
+
+## Screenshots of the application
+1) DeckList View:
+    ![Alt Text](images/decklist.gif)
+
+2) New Deck View:
+    ![Alt Text](images/newdeck.gif)
+    ![Alt Text](images/newdeck-alreadyexists.gif)
+
+3) New Card View:
+    ![Alt Text](images/addnewcard.gif)
+
+4) Quiz View:
+    ![Alt Text](images/quiz.gif)
 
 ## Updating to New Releases
 
