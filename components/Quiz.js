@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
-import { Card, ListItem, Button } from 'react-native-elements'
+import { Card, Button } from 'react-native-elements'
 import { NavigationActions } from 'react-navigation'
 import FlipCard from 'react-native-flip-card'
 import { clearLocalNotifications, setLocalNotification } from '../utils/helpers'
@@ -36,9 +36,9 @@ class Quiz extends Component {
       this.setState((prev) => {
         return { score: prev.score + 1 }
       })
-      this.setState({ displayResult: 'Good job! 👍', selectedAnswerType: true })
+      this.setState({ displayResult: 'Correct Answer!', selectedAnswerType: true })
     } else {
-      this.setState({ displayResult: 'Wrong answer! 👎', selectedAnswerType: false })
+      this.setState({ displayResult: 'Wrong answer!', selectedAnswerType: false })
     }
   }
 
@@ -54,10 +54,11 @@ class Quiz extends Component {
       .then(setLocalNotification)
   }
 
-  backToDeck = () => {
+  toDeck = () => {
     const { navigation } = this.props
-    const backAction = NavigationActions.back()
-    navigation.dispatch(backAction)
+    navigation.dispatch(NavigationActions.back({
+      key: 'Quiz'
+    }))
     clearLocalNotifications()
       .then(setLocalNotification)
   }
@@ -67,7 +68,6 @@ class Quiz extends Component {
     const { index, isFinished, displayResult, score, selectedAnswerType } = this.state
 
     let currentCard = cards[index]
-    console.log(currentCard)
 
     if (!isFinished) {
       return (
@@ -129,28 +129,28 @@ class Quiz extends Component {
               </View>
             )}
           </View>
-
         </View>
       )
     } else {
       return (
         <View>
           <Card
-            title="Results 🏆">
-            <Text style={{marginBottom: 20}}>
-              Your score : {((score / cards.length) * 100).toFixed(2) + "% correct answers"}
+            title="Quiz Results">
+            <Text style={{marginBottom: 20, textAlign: 'center', fontSize: 22}}>
+              {'Your score: ' + ((score / cards.length) * 100).toFixed(2) + "%\n"}
+              {score + " / " + cards.length + " answered correctly"}
             </Text>
             <Button
               icon={{name: 'replay'}}
               backgroundColor='rgb(24, 4, 92)'
-              buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 20}}
+              buttonStyle={{borderRadius: 5, marginBottom: 20}}
               title='Restart Quiz'
               onPress={this.restartQuiz} />
             <Button
               icon={{name: 'arrow-back'}}
-              backgroundColor='#444444'
-              onPress={this.backToDeck}
-              buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 20}}
+              backgroundColor='rgb(74, 74, 74)'
+              onPress={this.toDeck}
+              buttonStyle={{borderRadius: 5}}
               title='Back to Deck' />
           </Card>
         </View>

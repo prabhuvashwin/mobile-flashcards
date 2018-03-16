@@ -30,6 +30,12 @@ Mobile Flashcards is a iOS mobile application built using React Native and Redux
   ![Deck Already Exists](images/newdeck-alreadyexists.gif) ![Create New Card](images/addnewcard.gif)
   ![Take Quiz](images/quiz.gif)
 
+## References
+- Swipe to delete an item from Flat List [a link](https://github.com/sunlight3d/react_native_v0.49/tree/master/19-FlatList%233.How%20to%20swipe%20to%20delete%20an%20Item%20in%20FlatList)
+- React Native Flip Card [a link](https://github.com/moschan/react-native-flip-card)
+- React Navigation [a link](https://reactnavigation.org/docs/api-reference.html)
+- React Native Elements [a link](https://react-native-training.github.io/react-native-elements/docs/overview.html)
+
 ## Updating to New Releases
 
 You should only need to update the global installation of `create-react-native-app` very rarely, ideally never.

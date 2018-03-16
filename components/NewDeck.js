@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { View, TouchableOpacity, Text, StyleSheet, TextInput } from 'react-native'
-import { FormLabel, FormInput, Card, Button } from 'react-native-elements'
-import { NavigationActions } from 'react-navigation'
+import { View, Text, TextInput } from 'react-native'
+import { Card, Button } from 'react-native-elements'
 import { connect } from 'react-redux'
 import { saveDeckTitle } from '../utils/api'
 import { addDeck } from '../actions'
@@ -18,11 +17,8 @@ class NewDeck extends Component {
       alert('This deck name already exists.')
     } else {
       dispatch(addDeck(title))
-
       saveDeckTitle(title)
-
       navigation.navigate('Deck', { title })
-
       this.setState(() => ({ title: '' }))
     }
   }
@@ -30,13 +26,15 @@ class NewDeck extends Component {
   render() {
     const { title } = this.state
     return (
-      <View style={styles.container}>
+      <View style={{flex: 1, marginTop: 200}}>
         <Card
           title="What's the title of your new deck?"
           containerStyle={{justifyContent: 'space-between'}}>
-          <FormInput
+          <TextInput
             placeholder='Enter deck title: '
+            style={{height: 40, marginLeft: 20, fontSize: 20}}
             value={title}
+            multiline={true}
             onChangeText={(text) => {
               this.setState({ title: text })
             }} />
@@ -53,13 +51,6 @@ class NewDeck extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-  }
-})
 
 function mapStateToProps (decks) {
   return {

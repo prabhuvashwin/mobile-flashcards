@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, FlatList, Alert } from 'react-native'
-import { List, ListItem } from 'react-native-elements'
+import { ListItem } from 'react-native-elements'
 import { connect } from 'react-redux'
 import { getDecks, removeDeck } from '../actions'
 import { AppLoading } from 'expo'
@@ -47,7 +47,7 @@ class DeckList extends Component {
       onOpen: (secId, rowId, direction) => {
         this.setState({ activeRowKey: item.title });
       },
-      right: [{
+      left: [{
         onPress: () => {
           Alert.alert(
             'Alert',

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import reducer from './reducers'
 import { View, Platform, StatusBar, AsyncStorage, StyleSheet, Text } from 'react-native'
 import { TabNavigator, StackNavigator } from 'react-navigation'
-import { FontAwesome, Ionicons } from '@expo/vector-icons'
+import { Ionicons } from '@expo/vector-icons'
 import { Constants } from 'expo'
 import Deck from './components/Deck'
 import DeckList from './components/DeckList'
@@ -25,16 +25,16 @@ const Tabs = TabNavigator({
     screen: DeckList,
     navigationOptions: {
       swipeEnabled: true,
-      tabBarLabel: 'Decks',
-      tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
+      tabBarLabel: 'Current Decks',
+      tabBarIcon: ({ tintColor }) => <Ionicons name='ios-list-box-outline' size={30} color={tintColor} />
     },
   },
   NewDeck: {
     screen: NewDeck,
     navigationOptions: {
       swipeEnabled: true,
-      tabBarLabel: 'New Deck',
-      tabBarIcon: ({ tintColor }) => <FontAwesome name='plus-square' size={30} color={tintColor} />
+      tabBarLabel: 'Add Deck',
+      tabBarIcon: ({ tintColor }) => <Ionicons name='ios-add-circle-outline' size={30} color={tintColor} />
     },
   },
 }, {
@@ -72,7 +72,8 @@ const MainNavigator = StackNavigator({
       headerTintColor: 'white',
       headerStyle: {
         backgroundColor: '#444444',
-        height: 30
+        height: 30,
+        marginBottom: 5
       }
     }),
   },
@@ -84,7 +85,8 @@ const MainNavigator = StackNavigator({
       headerTintColor: 'white',
       headerStyle: {
         backgroundColor: '#444444',
-        height: 30
+        height: 30,
+        marginBottom: 5
       }
     }
   },
@@ -96,7 +98,8 @@ const MainNavigator = StackNavigator({
       headerTintColor: 'white',
       headerStyle: {
         backgroundColor: '#444444',
-        height: 30
+        height: 30,
+        marginBottom: 5
       }
     }
   }
