@@ -3,13 +3,13 @@ import { View, Text, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { Card, ListItem, Button } from 'react-native-elements'
 import { NavigationActions } from 'react-navigation'
+import FlipCard from 'react-native-flip-card-view'
 import { clearLocalNotifications, setLocalNotification } from '../utils/helpers'
 
 class Quiz extends Component {
   state = {
     index: 0,
     score: 0,
-    viewAnswer: false,
     selectedAnswerType: false,
     isFinished: false,
     displayResult: ''
@@ -20,7 +20,7 @@ class Quiz extends Component {
     const { cards } = this.props
 
     if (index < (cards.length - 1)) {
-      this.setState({ viewAnswer: false, displayResult: '' })
+      this.setState({ displayResult: '', selectedAnswerType: false })
       this.setState((state) => {
         return { index: index + 1 }
       })
@@ -47,8 +47,9 @@ class Quiz extends Component {
     this.setState({
       index: 0,
       score: 0,
-      viewAnswer: false,
-      isFinished: false
+      isFinished: false,
+      selectedAnswerType: false,
+      displayResult: ''
     })
     clearLocalNotifications()
       .then(setLocalNotification)
@@ -62,67 +63,79 @@ class Quiz extends Component {
       .then(setLocalNotification)
   }
 
+  _renderFront(currentCard) {
+    return (
+      <View style={{marginTop: 30, backgroundColor: 'blue', alignItems: 'center', justifyContent: 'center', height: 150}}>
+        <Text style={{textAlign: 'center', fontSize: 25}}>
+          {currentCard.question}
+        </Text>
+      </View>
+    );
+  }
+
+  _renderBack(currentCard) {
+    return (
+      <View style={{marginTop: 30, backgroundColor: 'yellow', alignItems: 'center', justifyContent: 'center', height: 150}}>
+        <Text style={{textAlign: 'center', fontSize: 25}}>
+          {currentCard.answer}
+        </Text>
+      </View>
+    );
+  }
+
   render() {
-    const { cards } = this.props
-    const { index, isFinished, viewAnswer, displayResult, score, selectedAnswerType } = this.state
+    const { cards, title } = this.props
+    const { index, isFinished, displayResult, score, selectedAnswerType } = this.state
 
     let currentCard = cards[index]
     console.log(currentCard)
 
     if (!isFinished) {
       return (
-        <View>
-          <Card
-            title={(index + 1) + " / " + cards.length}>
-            <Text style={{marginBottom: 20, textAlign: 'center', fontSize: 30}}>
-              {currentCard.question}
-            </Text>
+        <View style={{flex: 0.5, justifyContent: 'space-between'}}>
+          <View>
+            <Text style={{textAlign: 'center', fontSize: 25, marginTop: 20}}>{(index + 1) + " / " + cards.length + " cards"}</Text>
+            <Text style={{textAlign: 'center', fontSize: 25, marginTop: 20}}>{"Deck: " + title}</Text>
+            <FlipCard
+              style={{height: 250, textAlign: 'center', fontSize: 30}}
+              velocity={1}
+              tension={3}
+              friction={2}
+              renderFront={this._renderFront(currentCard)}
+              renderBack={this._renderBack(currentCard)} />
+          </View>
 
-
-            {(viewAnswer === false && displayResult.length === 0) && (
-              <Button
-                backgroundColor='#444444'
-                buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 20}}
-                title='View Answer'
-                onPress={() => this.setState({ viewAnswer: true })} />
-            )}
-            {(viewAnswer && displayResult.length === 0) && (
-              <Text style={{marginBottom: 20, textAlign: 'center', fontSize: 25, color: 'rgb(24, 4, 92)'}}>{currentCard.answer}</Text>
-            )}
-
+          <View>
             {displayResult.length === 0 && (
-              <View>
+              <View style={{flex:1, flexDirection: 'row', justifyContent: 'space-around'}}>
                 <Button
                   backgroundColor='green'
-                  buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 20}}
+                  buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 20, height: 60, width: 150}}
                   title='Correct'
-                  disabled={!viewAnswer}
                   onPress={() => this.submitAnswer(true)} />
                 <Button
                   backgroundColor='red'
-                  buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 20}}
+                  buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 20, height: 60, width: 150}}
                   title='Incorrect'
-                  disabled={!viewAnswer}
                   onPress={() => this.submitAnswer(false)} />
               </View>
             )}
 
             {displayResult.length > 0 && (
-              <View>
-                <Text style={{marginBottom: 20, textAlign: 'center', fontSize: 25,
-                      color: currentCard.answerType ? 'rgb(3, 136, 12)' : 'rgb(233, 48, 7)'}}>{currentCard.answer}</Text>
-                <Text style={{marginBottom: 20, textAlign: 'center', fontSize: 28,
+              <View style={{flex:1, justifyContent: 'space-between'}}>
+                <Text style={{marginBottom: 20, textAlign: 'center', fontSize: 22,
                       color: selectedAnswerType ? 'rgb(3, 136, 12)' : 'rgb(233, 48, 7)'}}>{displayResult}</Text>
-                <Text style={{marginBottom: 20, textAlign: 'center', fontSize: 28,
-                      color: 'rgb(24, 4, 92)'}}>{currentCard.comments}</Text>
+                <Text style={{marginBottom: 20, textAlign: 'center', fontSize: 18,
+                      color: 'rgb(24, 4, 92)'}}>{'Info: ' + currentCard.comments}</Text>
                 <Button
                   backgroundColor='#444444'
-                  buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 20}}
+                  buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 20, height: 60}}
                   title='NEXT'
                   onPress={this.nextCard} />
               </View>
             )}
-          </Card>
+          </View>
+
         </View>
       )
     } else {
@@ -135,7 +148,7 @@ class Quiz extends Component {
             </Text>
             <Button
               icon={{name: 'replay'}}
-              backgroundColor='#ffe274'
+              backgroundColor='rgb(24, 4, 92)'
               buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 20}}
               title='Restart Quiz'
               onPress={this.restartQuiz} />
@@ -157,7 +170,8 @@ function mapStateToProps (decks, { navigation }) {
   const { title } = navigation.state.params
 
   return {
-    cards: decks[title].cards
+    cards: decks[title].cards,
+    title
   }
 }
 
