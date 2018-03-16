@@ -32,6 +32,7 @@ Mobile Flashcards is a iOS mobile application built using React Native and Redux
 
 ## References
 - Swipe to delete an item from Flat List [a link](https://github.com/sunlight3d/react_native_v0.49/tree/master/19-FlatList%233.How%20to%20swipe%20to%20delete%20an%20Item%20in%20FlatList)
+- Swipeout [a link](https://github.com/dancormier/react-native-swipeout)
 - React Native Flip Card [a link](https://github.com/moschan/react-native-flip-card)
 - React Navigation [a link](https://reactnavigation.org/docs/api-reference.html)
 - React Native Elements [a link](https://react-native-training.github.io/react-native-elements/docs/overview.html)
