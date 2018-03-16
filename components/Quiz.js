@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { Card, ListItem, Button } from 'react-native-elements'
 import { NavigationActions } from 'react-navigation'
-import FlipCard from 'react-native-flip-card-view'
+import FlipCard from 'react-native-flip-card'
 import { clearLocalNotifications, setLocalNotification } from '../utils/helpers'
 
 class Quiz extends Component {
@@ -42,7 +42,6 @@ class Quiz extends Component {
     }
   }
 
-
   restartQuiz = () => {
     this.setState({
       index: 0,
@@ -63,26 +62,6 @@ class Quiz extends Component {
       .then(setLocalNotification)
   }
 
-  _renderFront(currentCard) {
-    return (
-      <View style={{marginTop: 30, backgroundColor: 'blue', alignItems: 'center', justifyContent: 'center', height: 150}}>
-        <Text style={{textAlign: 'center', fontSize: 25}}>
-          {currentCard.question}
-        </Text>
-      </View>
-    );
-  }
-
-  _renderBack(currentCard) {
-    return (
-      <View style={{marginTop: 30, backgroundColor: 'yellow', alignItems: 'center', justifyContent: 'center', height: 150}}>
-        <Text style={{textAlign: 'center', fontSize: 25}}>
-          {currentCard.answer}
-        </Text>
-      </View>
-    );
-  }
-
   render() {
     const { cards, title } = this.props
     const { index, isFinished, displayResult, score, selectedAnswerType } = this.state
@@ -97,12 +76,27 @@ class Quiz extends Component {
             <Text style={{textAlign: 'center', fontSize: 25, marginTop: 20}}>{(index + 1) + " / " + cards.length + " cards"}</Text>
             <Text style={{textAlign: 'center', fontSize: 25, marginTop: 20}}>{"Deck: " + title}</Text>
             <FlipCard
-              style={{height: 250, textAlign: 'center', fontSize: 30}}
-              velocity={1}
-              tension={3}
-              friction={2}
-              renderFront={this._renderFront(currentCard)}
-              renderBack={this._renderBack(currentCard)} />
+              style={{height: 250, opacity: 0.8}}
+              friction={6}
+              perspective={1000}
+              flipHorizontal={true}
+              flipVertical={true}
+              flip={false}
+              clickable={true}
+              onFlipEnd={(isFlipEnd)=>{isFlipEnd}} >
+              {/* Front Side */}
+              <View style={{marginTop: 30, backgroundColor: 'rgb(15, 9, 7)', alignItems: 'center', justifyContent: 'center', height: 150}}>
+                <Text style={{textAlign: 'center', color: 'white', fontSize: 25}}>
+                  {currentCard.question}
+                </Text>
+              </View>
+              {/* Back Side */}
+              <View style={{marginTop: 30, backgroundColor: 'rgb(8, 41, 26)', alignItems: 'center', justifyContent: 'center', height: 150}}>
+                <Text style={{textAlign: 'center', color: 'white', fontSize: 25}}>
+                  {currentCard.answer}
+                </Text>
+              </View>
+            </FlipCard>
           </View>
 
           <View>
@@ -164,7 +158,6 @@ class Quiz extends Component {
     }
   }
 }
-
 
 function mapStateToProps (decks, { navigation }) {
   const { title } = navigation.state.params
