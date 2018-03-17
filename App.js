@@ -13,6 +13,7 @@ import NewCard from './components/NewCard'
 import Quiz from './components/Quiz'
 import QuizResults from './components/QuizResults'
 import { styles } from './utils/styles'
+import { colors } from './utils/colors'
 
 function AppStatusBar ({backgroundColor, ...props}) {
   return (
@@ -44,14 +45,14 @@ const Tabs = TabNavigator({
     header: null
   },
   tabBarOptions: {
-    activeTintColor: Platform.OS === 'ios' ? '#0e0787' : 'white',
+    activeTintColor: colors.DARK_BLUE,
     labelStyle: {
       fontSize: 15,
     },
     style: {
       height: 56,
-      backgroundColor: Platform.OS === 'ios' ? 'white' : '#0e0787',
-      shadowColor: 'rgba(0, 0, 0, 0.24)',
+      backgroundColor: colors.WHITE,
+      shadowColor: colors.SHADOW_BLACK,
       shadowOffset: {
         width: 0,
         height: 3
@@ -68,24 +69,24 @@ const MainNavigator = StackNavigator({
   },
   Deck: {
     screen: Deck,
-    navigationOptions: ({navigation}) => ({
+    navigationOptions: {
       title: 'Flashcards',
       headerBackTitle: 'back',
-      headerTintColor: 'white',
+      headerTintColor: colors.WHITE,
       headerStyle: {
-        backgroundColor: 'rgb(74, 74, 74)',
+        backgroundColor: colors.GREYISH_BROWN,
         height: 30
       }
-    }),
+    }
   },
   NewCard: {
     screen: NewCard,
     navigationOptions: {
       title: 'Flashcards',
       headerBackTitle: 'back',
-      headerTintColor: 'white',
+      headerTintColor: colors.WHITE,
       headerStyle: {
-        backgroundColor: 'rgb(74, 74, 74)',
+        backgroundColor: colors.GREYISH_BROWN,
         height: 30
       }
     }
@@ -95,9 +96,9 @@ const MainNavigator = StackNavigator({
     navigationOptions: {
       title: 'Flashcards',
       headerBackTitle: 'back',
-      headerTintColor: 'white',
+      headerTintColor: colors.WHITE,
       headerStyle: {
-        backgroundColor: 'rgb(74, 74, 74)',
+        backgroundColor: colors.GREYISH_BROWN,
         height: 30
       }
     }
@@ -107,9 +108,9 @@ const MainNavigator = StackNavigator({
     navigationOptions: {
       title: 'Flashcards',
       headerBackTitle: 'back',
-      headerTintColor: 'white',
+      headerTintColor: colors.WHITE,
       headerStyle: {
-        backgroundColor: 'rgb(74, 74, 74)',
+        backgroundColor: colors.GREYISH_BROWN,
         height: 30
       }
     }
@@ -122,7 +123,7 @@ export default class App extends Component {
     return (
       <Provider store={createStore(reducer)}>
         <View style={{flex: 1}}>
-          <AppStatusBar backgroundColor={'rgb(74, 74, 74)'} barStyle="light-content" />
+          <AppStatusBar backgroundColor={colors.GREYISH_BROWN} barStyle="light-content" />
           <MainNavigator />
         </View>
       </Provider>

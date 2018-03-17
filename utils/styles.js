@@ -1,10 +1,11 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
+import { colors } from './colors'
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.WHITE,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -18,11 +19,11 @@ export const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   txtInput: {
-    height: 60,
-    borderColor: 'gray',
+    height: 40,
+    borderColor: colors.GREY,
     marginBottom: 20,
     marginLeft: 10,
-    fontSize: 16,
+    fontSize: 14,
   },
   flipCard: {
     height: 250,

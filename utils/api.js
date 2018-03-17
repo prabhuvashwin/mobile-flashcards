@@ -43,4 +43,5 @@ export function addCardToDeck(title, card) {
       data[title].cards.push(card)
       AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data))
     })
+    .then(alert('Added a new card to the deck: ' + title))
 }

@@ -5,6 +5,7 @@ import { Card, Button } from 'react-native-elements'
 import { NavigationActions } from 'react-navigation'
 import { clearLocalNotifications, setLocalNotification } from '../utils/helpers'
 import { styles } from '../utils/styles'
+import { colors } from '../utils/colors'
 
 class QuizResults extends Component {
   restartQuiz = () => {
@@ -12,7 +13,7 @@ class QuizResults extends Component {
     clearLocalNotifications()
       .then(setLocalNotification)
     const restart = NavigationActions.back({
-      params: { title, restart: true },
+      params: { title },
       actions: [NavigationActions.navigate({ routeName: 'Quiz' })],
     })
 
@@ -20,12 +21,13 @@ class QuizResults extends Component {
   }
 
   toDeck = () => {
-    const { navigation } = this.props
+    const { navigation, title } = this.props
     clearLocalNotifications()
       .then(setLocalNotification)
     const back = NavigationActions.reset({
       index: 0,
-      actions: [NavigationActions.navigate({ routeName: 'Home' })],
+      key: null,
+      actions: [NavigationActions.navigate({ routeName: 'Deck', params: { title } })],
     })
 
     navigation.dispatch(back)
@@ -43,13 +45,13 @@ class QuizResults extends Component {
           </Text>
           <Button
             icon={{name: 'replay'}}
-            backgroundColor='rgb(24, 4, 92)'
+            backgroundColor={colors.DARK_BLUE}
             buttonStyle={styles.btn}
             title='Restart Quiz'
             onPress={this.restartQuiz} />
           <Button
             icon={{name: 'arrow-back'}}
-            backgroundColor='rgb(74, 74, 74)'
+            backgroundColor={colors.GREYISH_BROWN}
             onPress={this.toDeck}
             buttonStyle={styles.btn}
             title='Back to Deck' />

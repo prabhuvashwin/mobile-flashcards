@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { saveDeckTitle } from '../utils/api'
 import { addDeck } from '../actions'
 import { styles } from '../utils/styles'
+import { colors } from '../utils/colors'
 
 class NewDeck extends Component {
   state = {
@@ -42,7 +43,7 @@ class NewDeck extends Component {
 
           <Button
             icon={{name: 'add'}}
-            backgroundColor='#0e0787'
+            backgroundColor={colors.DARK_BLUE}
             disabled={title.length === 0}
             onPress={this.submit}
             buttonStyle={styles.btn}

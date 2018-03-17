@@ -6,6 +6,7 @@ import { NavigationActions } from 'react-navigation'
 import FlipCard from 'react-native-flip-card'
 import { clearLocalNotifications, setLocalNotification } from '../utils/helpers'
 import { styles } from '../utils/styles'
+import { colors } from '../utils/colors'
 
 class Quiz extends Component {
   state = {
@@ -80,14 +81,14 @@ class Quiz extends Component {
             clickable={true}
             onFlipEnd={(isFlipEnd)=>{isFlipEnd}} >
 
-            <View style={[styles.flipCardViews, {backgroundColor: 'rgb(15, 9, 7)'}]}>
-              <Text style={[styles.text, {color: 'white', fontSize: 25}]}>
+            <View style={[styles.flipCardViews, {backgroundColor: colors.BLACK}]}>
+              <Text style={[styles.text, {color: colors.WHITE, fontSize: 25}]}>
                 {currentCard.question}
               </Text>
             </View>
 
-            <View style={[styles.flipCardViews, {backgroundColor: 'rgb(8, 41, 26)'}]}>
-              <Text style={[styles.text, {color: 'white', fontSize: 25}]}>
+            <View style={[styles.flipCardViews, {backgroundColor: colors.DARK_GREEN}]}>
+              <Text style={[styles.text, {color: colors.WHITE, fontSize: 25}]}>
                 {currentCard.answer}
               </Text>
             </View>
@@ -98,12 +99,12 @@ class Quiz extends Component {
           {!displayResult && (
             <View style={{flex:1, flexDirection: 'row', justifyContent: 'space-around'}}>
               <Button
-                backgroundColor='green'
+                backgroundColor={colors.BRIGHT_GREEN}
                 buttonStyle={[styles.btn, {height: 60, width: 150}]}
                 title='Correct'
                 onPress={() => this.submit(true)} />
               <Button
-                backgroundColor='red'
+                backgroundColor={colors.RED}
                 buttonStyle={[styles.btn, {height: 60, width: 150}]}
                 title='Incorrect'
                 onPress={() => this.submit(false)} />
@@ -113,11 +114,11 @@ class Quiz extends Component {
           {displayResult && (
             <View style={{flex:1, justifyContent: 'space-between'}}>
               <Text style={[styles.text, {marginBottom: 20, fontSize: 22,
-                    color: selectedAnswerType ? 'rgb(3, 136, 12)' : 'rgb(233, 48, 7)'}]}>{resultDescription}</Text>
+                    color: selectedAnswerType ? colors.BRIGHT_GREEN : colors.RED}]}>{resultDescription}</Text>
               <Text style={[styles.text, {marginBottom: 20, fontSize: 18,
-                    color: 'rgb(24, 4, 92)'}]}>{'Info: ' + currentCard.comments}</Text>
+                    color: colors.DARK_BLUE}]}>{'Info: ' + currentCard.comments}</Text>
               <Button
-                backgroundColor='rgb(74, 74, 74)'
+                backgroundColor={colors.GREY}
                 buttonStyle={[styles.btn, {height: 60}]}
                 title='Next'
                 onPress={this.nextCard} />

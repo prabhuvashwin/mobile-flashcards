@@ -5,6 +5,7 @@ import { Card, Button, CheckBox } from 'react-native-elements'
 import { addCardToDeck } from '../utils/api'
 import { addCard } from '../actions'
 import { styles } from '../utils/styles'
+import { colors } from '../utils/colors'
 
 class NewCard extends Component {
   state = {
@@ -39,7 +40,6 @@ class NewCard extends Component {
       <KeyboardAvoidingView behavior='padding' style={{flex: 1}}>
         <Card title="New Card">
           <TextInput
-            multiline
             placeholder="Enter question: "
             style={styles.txtInput}
             value={question}
@@ -52,7 +52,6 @@ class NewCard extends Component {
             placeholder="Enter answer: "
             style={styles.txtInput}
             value={answer}
-            multiline={true}
             onChangeText={(text) => {
               this.setState({ answer: text })
             }} />
@@ -61,7 +60,6 @@ class NewCard extends Component {
             placeholder="Enter comment: "
             style={styles.txtInput}
             value={comments}
-            multiline={true}
             onChangeText={(text) => {
               this.setState({ comments: text })
             }} />
@@ -77,7 +75,7 @@ class NewCard extends Component {
 
           <Button
             icon={{name: 'add'}}
-            backgroundColor='#0e0787'
+            backgroundColor={colors.DARK_BLUE}
             disabled={!(question.length !== 0 && answer.length !== 0)}
             onPress={this.submit}
             buttonStyle={styles.btn}
