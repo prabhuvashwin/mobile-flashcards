@@ -25,15 +25,22 @@ export const styles = StyleSheet.create({
     marginLeft: 10,
     fontSize: 14,
   },
-  flipCard: {
-    height: 250,
-    opacity: 0.8
+  flipContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
-  flipCardViews: {
-    marginTop: 30,
+  flipCard: {
+    height: 200,
+    marginTop: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    height: 150
+    backfaceVisibility: 'hidden'
+  },
+  flipCardBack: {
+    position: 'absolute',
+    width: '100%',
+    top: 0
   },
   text: {
     textAlign: 'center'

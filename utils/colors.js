@@ -9,5 +9,6 @@ export const colors = {
   GREY: '#4a4a4a',
   ORANGE: '#c16008',
   LIGHT_BLUE: '#074a87',
-  SHADOW_BLACK: 'rgba(0, 0, 0, 0.24)'
+  SHADOW_BLACK: 'rgba(0, 0, 0, 0.24)',
+  YELLOW: '#f2f010'
 }

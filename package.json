@@ -24,7 +24,7 @@
     "react-native": "0.52.0",
     "react-native-elements": "^0.19.0",
     "react-native-flip-card": "^3.5.2",
-    "react-native-flip-card-view": "^0.0.6",
+    "react-native-flip-view": "^1.0.5",
     "react-native-keyboard-aware-scrollview": "^2.0.0",
     "react-native-swipe-list-view": "^1.0.6",
     "react-native-swipeout": "^2.3.3",

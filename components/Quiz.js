@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Platform } from 'react-native'
 import { connect } from 'react-redux'
 import { Card, Button } from 'react-native-elements'
 import { NavigationActions } from 'react-navigation'
-import FlipCard from 'react-native-flip-card'
+import Flipcard from './Flipcard'
 import { clearLocalNotifications, setLocalNotification } from '../utils/helpers'
 import { styles } from '../utils/styles'
 import { colors } from '../utils/colors'
@@ -71,28 +71,9 @@ class Quiz extends Component {
         <View>
           <Text style={[styles.text, {fontSize: 25, marginTop: 20}]}>{(index + 1) + " / " + cards.length + " cards"}</Text>
           <Text style={[styles.text, {fontSize: 25, marginTop: 20}]}>{"Deck: " + title}</Text>
-          <FlipCard
-            style={styles.flipCard}
-            friction={6}
-            perspective={1000}
-            flipHorizontal={true}
-            flipVertical={true}
-            flip={false}
-            clickable={true}
-            onFlipEnd={(isFlipEnd)=>{isFlipEnd}} >
 
-            <View style={[styles.flipCardViews, {backgroundColor: colors.BLACK}]}>
-              <Text style={[styles.text, {color: colors.WHITE, fontSize: 25}]}>
-                {currentCard.question}
-              </Text>
-            </View>
+          <Flipcard question={currentCard.question} answer={currentCard.answer} displayResult={displayResult} />
 
-            <View style={[styles.flipCardViews, {backgroundColor: colors.DARK_GREEN}]}>
-              <Text style={[styles.text, {color: colors.WHITE, fontSize: 25}]}>
-                {currentCard.answer}
-              </Text>
-            </View>
-          </FlipCard>
         </View>
 
         <View>

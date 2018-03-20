@@ -46,12 +46,13 @@ const Tabs = TabNavigator({
   },
   tabBarOptions: {
     activeTintColor: colors.DARK_BLUE,
+    inactiveTintColor: colors.DARK_BLUE,
     labelStyle: {
       fontSize: 15,
     },
     style: {
       height: 56,
-      backgroundColor: colors.WHITE,
+      backgroundColor: Platform.OS === 'ios' ? colors.WHITE : colors.YELLOW,
       shadowColor: colors.SHADOW_BLACK,
       shadowOffset: {
         width: 0,
@@ -72,9 +73,9 @@ const MainNavigator = StackNavigator({
     navigationOptions: {
       title: 'Flashcards',
       headerBackTitle: 'back',
-      headerTintColor: colors.WHITE,
+      headerTintColor: colors.DARK_BLUE,
       headerStyle: {
-        backgroundColor: colors.GREYISH_BROWN,
+        backgroundColor: Platform.OS === 'ios' ? colors.GREYISH_BROWN : colors.YELLOW,
         height: 30
       }
     }
@@ -84,9 +85,9 @@ const MainNavigator = StackNavigator({
     navigationOptions: {
       title: 'Flashcards',
       headerBackTitle: 'back',
-      headerTintColor: colors.WHITE,
+      headerTintColor: colors.DARK_BLUE,
       headerStyle: {
-        backgroundColor: colors.GREYISH_BROWN,
+        backgroundColor: Platform.OS === 'ios' ? colors.WHITE : colors.YELLOW,
         height: 30
       }
     }
@@ -96,9 +97,9 @@ const MainNavigator = StackNavigator({
     navigationOptions: {
       title: 'Flashcards',
       headerBackTitle: 'back',
-      headerTintColor: colors.WHITE,
+      headerTintColor: colors.DARK_BLUE,
       headerStyle: {
-        backgroundColor: colors.GREYISH_BROWN,
+        backgroundColor: Platform.OS === 'ios' ? colors.WHITE : colors.YELLOW,
         height: 30
       }
     }
@@ -108,9 +109,9 @@ const MainNavigator = StackNavigator({
     navigationOptions: {
       title: 'Flashcards',
       headerBackTitle: 'back',
-      headerTintColor: colors.WHITE,
+      headerTintColor: colors.DARK_BLUE,
       headerStyle: {
-        backgroundColor: colors.GREYISH_BROWN,
+        backgroundColor: Platform.OS === 'ios' ? colors.WHITE : colors.YELLOW,
         height: 30
       }
     }

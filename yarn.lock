@@ -5283,15 +5283,15 @@ react-native-elements@^0.19.0:
     opencollective "^1.0.3"
     prop-types "^15.5.8"
 
-react-native-flip-card-view@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/react-native-flip-card-view/-/react-native-flip-card-view-0.0.6.tgz#8a6b17206618a0991bd76824cb323738f3a71101"
-
 react-native-flip-card@^3.5.2:
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/react-native-flip-card/-/react-native-flip-card-3.5.2.tgz#6563f4a6d95b999c21e82deec9b2f502175847d6"
   dependencies:
     prop-types "^15.5.10"
+
+react-native-flip-view@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-flip-view/-/react-native-flip-view-1.0.5.tgz#6f18ac4da021d0672c8531676c8cb08ef4f36915"
 
 react-native-gesture-handler@1.0.0-alpha.39:
   version "1.0.0-alpha.39"
